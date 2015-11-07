@@ -5,14 +5,12 @@
  *      Author: bkloppenborg
  */
 
-
 #include <QtGui>
 #include <QApplication>
 #include "window.h"
 
 int main(int argc, char* argv[])
 {
-
 	// Pass off to the GUI:
     QApplication app(argc, argv);
 

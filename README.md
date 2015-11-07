@@ -1,15 +1,19 @@
-opengl-worker-test
+opengl-profile-test
 ================
 
-Prototyping using a variable number of threads with OpenGL/OpenCL contexts to
-compute various quantities.
+A simple QT5 program that creates an OpenGL window and retreives the context
 
 ## Prerequisites
 
 * OpenGL
-* QT 4.8
+* QT 5
 * CMake
 * A C/C++ compiler (e.g. gcc)
+
+## Context version
+
+Change the context you want by modifying the properties of `QSurfaceFormat`
+found in `src/main.cpp`
 
 ## Building
 
@@ -18,3 +22,7 @@ cd build
 cmake ..
 make
 ```
+
+## Running
+
+After it is complied, the executable is `bin/profile-test`
