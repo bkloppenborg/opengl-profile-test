@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 2.8) 
+project(worker-test CXX C)
+
+find_package(OpenGL REQUIRED)
+MESSAGE(STATUS "found OPENGL, lib = " ${OPENGL_LIBRARIES} )
+add_definitions(-DGL_GLEXT_PROTOTYPES )
+
+# QT library
+SET(CMAKE_AUTOMOC ON)
+FIND_PACKAGE(Qt5 COMPONENTS Core Widgets Gui OpenGL REQUIRED)
+INCLUDE_DIRECTORIES(${Qt5_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS}
+    ${Qt5Widgets_INCLUDE_DIRS} 
+    ${Qt5Gui_INCLUDE_DIRS} ${Qt5OpenGL_INCLUDE_DIRS}) 
+SET(QT_LIBRARIES ${Qt5_LIBRARIES} ${Qt5Core_LIBRARIES}
+    ${Qt5Widgets_LIBRARIES} 
+    ${Qt5Gui_LIBRARIES} ${Qt5OpenGL_LIBRARIES})
+    
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/QT ${CMAKE_CURRENT_BINARY_DIR}/QT)
+
+file(GLOB SOURCE *.cpp)
+
+# Now add the binary
+add_executable(profile-test ${SOURCE})
+
+target_link_libraries(profile-test ${QT_LIBRARIES} ${OPENGL_LIBRARIES})
